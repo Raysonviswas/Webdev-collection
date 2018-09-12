@@ -1,0 +1,17 @@
+p#main  {
+    color: aquamarine;
+    font-size: 100%;
+}
+
+p.primary {
+    background: aliceblue;
+    color: #4286f4;
+    font-size: 350%;
+    padding: 0 0 0 30px;
+}
+
+p {
+    background: grey;
+    color: aliceblue;
+    inline-block;
+}

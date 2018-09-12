@@ -1,0 +1,16 @@
+body {
+	background: grey;
+	font-family: calibri;
+
+}
+h1,h2 {
+	color: #500;
+}
+li,p {
+	background: green;
+	color: white;
+	padding: 0px, 10px;
+}
+.secondary {
+	background: lime;
+}

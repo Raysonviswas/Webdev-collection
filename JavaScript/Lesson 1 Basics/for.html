@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Learning JavaScript</Title>
+	<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="header">
+	<h1>Learning JavaScript</h1>
+	<p>With Rayson Viswas</p>
+	</div>
+
+<div class="container">
+
+</div>
+
+<script>
+//constructor pattern
+function Fruit(name,colour,shape){
+	this.name = name;
+	this.colour = colour;
+	this.shape = shape;
+
+	this.describe = function(){
+		return 'A '+this.name+' is the colour '+this.colour+' and is the shape '+this.shape;
+	}
+
+var melon = new Fruit('melon','yellow','round');
+
+console.log(melon.describe());
+}
+
+</script>
+
+</body>
+
+</body>
+</html>
