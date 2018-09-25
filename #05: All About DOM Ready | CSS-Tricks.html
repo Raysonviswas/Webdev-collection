@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width">
+
+  
+  <title>#05: All About DOM Ready | CSS-Tricks</title>
+
+  <link rel="apple-touch-icon" href="https://css-tricks.com/apple-touch-icon.png">
+  <meta name="msapplication-TileColor" content="#00aba9">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+
+  <meta property="fb:pages" content="124436167285">
+
+  <link rel="search" type="application/opensearchdescription+xml" href="https://css-tricks.com/opensearch.xml" title="CSS-Tricks Search">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://feeds.feedburner.com/CssTricks">
+
+  <link rel="stylesheet" href="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/fonts.css">
+  <!--[if !IE]><!-->
+  <link rel="stylesheet" href="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/style.css">
+  <!--<![endif]-->
+  <!--[if lt IE 9]>
+  <link rel="stylesheet" href="https://css-tricks.com/wp-content/themes/CSS-Tricks-16/css/oldie.css">
+  <![endif]-->
+  <!--[if IE 9]>
+  <link rel="stylesheet" href="https://css-tricks.com/wp-content/themes/CSS-Tricks-16/style.css?v=16.4>
+  <![endif]-->
+
+    
+  
+<!-- This site is optimized with the Yoast SEO plugin v8.1.2 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="We've talked a good bit about selectors. A jQuery selector like $(&quot;h1&quot;) will select all elements on the page. But what about... when it doesn't? Here's an">
+<link rel="canonical" href="https://css-tricks.com/lodge/learn-jquery/05-dom-ready/">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="#05: All About DOM Ready | CSS-Tricks">
+<meta property="og:description" content="We've talked a good bit about selectors. A jQuery selector like $(&quot;h1&quot;) will select all elements on the page. But what about... when it doesn't? Here's an">
+<meta property="og:url" content="https://css-tricks.com/lodge/learn-jquery/05-dom-ready/">
+<meta property="og:site_name" content="CSS-Tricks">
+<meta property="article:publisher" content="https://www.facebook.com/CSSTricks">
+<meta property="og:image" content="https://css-tricks.com/wp-content/uploads/2014/03/css-tricks-star.png">
+<meta property="og:image:secure_url" content="https://css-tricks.com/wp-content/uploads/2014/03/css-tricks-star.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="We've talked a good bit about selectors. A jQuery selector like $(&quot;h1&quot;) will select all elements on the page. But what about... when it doesn't? Here's an">
+<meta name="twitter:title" content="#05: All About DOM Ready | CSS-Tricks">
+<meta name="twitter:site" content="@Real_CSS_Tricks">
+<meta name="twitter:image" content="https://css-tricks.com/wp-content/uploads/2014/03/css-tricks-star.png">
+<meta name="twitter:creator" content="@chriscoyier">
+<script id="twitter-wjs" src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/widgets.js"></script><script async="" src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/analytics.js"></script><script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/css-tricks.com\/","name":"Home"}},{"@type":"ListItem","position":2,"item":{"@id":"https:\/\/css-tricks.com\/lodge\/","name":"The Lodge"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/css-tricks.com\/lodge\/learn-jquery\/","name":"Learn jQuery from Scratch"}},{"@type":"ListItem","position":4,"item":{"@id":"https:\/\/css-tricks.com\/lodge\/learn-jquery\/05-dom-ready\/","name":"#05: All About DOM Ready"}}]}</script>
+<!-- / Yoast SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="CSS-Tricks » #05: All About DOM Ready Comments Feed" href="https://css-tricks.com/lodge/learn-jquery/05-dom-ready/feed/">
+<link rel="stylesheet" id="dashicons-css" href="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/dashicons.css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack-search-widget-css" href="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/search-widget-frontend.css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack-widget-social-icons-styles-css" href="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/social-icons.css" type="text/css" media="all">
+<script src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/jquery-3.js"></script>
+<link rel="https://api.w.org/" href="https://css-tricks.com/wp-json/">
+<link rel="shortlink" href="https://wp.me/P354tK-CI6">
+<link rel="alternate" type="application/json+oembed" href="https://css-tricks.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcss-tricks.com%2Flodge%2Flearn-jquery%2F05-dom-ready%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://css-tricks.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcss-tricks.com%2Flodge%2Flearn-jquery%2F05-dom-ready%2F&amp;format=xml">
+<!-- Better Art Direction Styles -->
+
+
+
+<link rel="dns-prefetch" href="https://v0.wordpress.com/">
+<link rel="dns-prefetch" href="https://jetpack.wordpress.com/">
+<link rel="dns-prefetch" href="https://s0.wp.com/">
+<link rel="dns-prefetch" href="https://s1.wp.com/">
+<link rel="dns-prefetch" href="https://s2.wp.com/">
+<link rel="dns-prefetch" href="https://public-api.wordpress.com/">
+<link rel="dns-prefetch" href="https://0.gravatar.com/">
+<link rel="dns-prefetch" href="https://1.gravatar.com/">
+<link rel="dns-prefetch" href="https://2.gravatar.com/">
+<style type="text/css">img#wpstats{display:none}</style>
+<style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed, .fluid-width-video-wrapper video {position:absolute;top:0;left:0;width:100%;height:100%;}</style><script type="text/javascript" charset="utf-8" async="" src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/button.js"></script><script async="" src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/bsa.js"></script><script type="text/javascript" id="_bsap_js_3469a2a501a9e18091036aa0c89f9dcb" src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/s_3469a2a501a9e18091036aa0c89f9dcb.js" async="async"></script><script type="text/javascript" src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/pro.js" id="_bsap_premium_pro"></script><script type="text/javascript" id="_bsaPRO_js" src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/a.js" async="async"></script></head>
+
+<body class="page-template page-template-lodge-video page-template-lodge-video-php page page-id-148806 page-child parent-pageid-147848">
+
+  <header class="site-header">
+
+  <div class="menu-toggle-area">
+    <button id="mobile-menu-toggle" class="button button-header mobile-menu-toggle">
+      <svg class="icon-menu" width="26px" height="26px">
+        <use xlink:href="#icon-menu"></use>
+      </svg>
+    </button>
+  </div>
+
+  <div class="logo">
+    <a href="https://css-tricks.com/">
+      <svg class="icon-logo-star" width="26px" height="26px">
+        <use xlink:href="#icon-logo-star"></use>
+      </svg>
+    </a>
+  </div>
+
+  <div class="header-middle-area">
+
+    <a href="https://css-tricks.com/" class="logo-link">
+      CSS-Tricks
+    </a>
+
+  </div>
+
+  <button id="search-opener" class="button button-header search-opener-button">
+    <svg class="icon-search" width="26px" height="26px">
+      <use xlink:href="#icon-search"></use>
+    </svg>
+    <svg class="icon-close" width="26px" height="26px">
+      <use xlink:href="#icon-close"></use>
+    </svg>
+  </button>
+
+  <div class="search" role="search" id="search-area">
+                  <div class="chw-widget"><form role="search" method="get" id="searchform" class="search-form" action="https://css-tricks.com/">
+
+  <label class="screen-reader-text" id="search-label" for="s">Search for:</label>
+
+  <input required="" name="s" id="s" aria-labelledby="search-label" class="search-field" placeholder="flexbox" type="search">
+
+    <input name="orderby" value="relevance" type="hidden">
+  <input name="post_type" value="post,page,guide" type="hidden">
+
+  <button type="submit" class="button button-header search-button">
+    <svg class="icon-search" width="26px" height="26px">
+      <use xlink:href="#icon-search"></use>
+    </svg>
+  </button>
+
+</form></div>            </div>
+
+</header>
+
+    <div class="all-site-wrap">
+  
+    <nav class="main-nav" id="main-nav">
+
+  <ul>
+    <li class="home">
+      <a href="https://css-tricks.com/">
+        <svg class="icon-nav-home" width="26px" height="26px">
+          <use xlink:href="#icon-nav-home"></use>
+        </svg>
+        <span>Home</span>
+      </a>
+    </li>
+    <li class="videos">
+      <a href="https://css-tricks.com/video-screencasts/">
+        <svg class="icon-nav-video" width="26px" height="26px">
+          <use xlink:href="#icon-nav-video"></use>
+        </svg>
+        <span>Videos</span>
+      </a>
+    </li>
+    <li class="almanac">
+      <a href="https://css-tricks.com/almanac/">
+        <svg class="icon-nav-almanac" width="26px" height="26px">
+          <use xlink:href="#icon-nav-almanac"></use>
+        </svg>
+        <span>Almanac</span>
+      </a>
+    </li>
+    <li class="gallery">
+      <a href="https://css-tricks.com/gallery/">
+        <svg class="icon-nav-gallery" width="26px" height="26px">
+          <use xlink:href="#icon-nav-gallery"></use>
+        </svg>
+        <span>Gallery</span>
+      </a>
+    </li>
+    <li class="snippets">
+      <a href="https://css-tricks.com/snippets/">
+        <svg class="icon-nav-snippets" width="26px" height="26px">
+          <use xlink:href="#icon-nav-snippets"></use>
+        </svg>
+        <span>Snippets</span>
+      </a>
+    </li>
+    <li class="forums">
+      <a href="https://css-tricks.com/forums/">
+        <svg class="icon-nav-forums" width="26px" height="26px">
+          <use xlink:href="#icon-nav-forums"></use>
+        </svg>
+        <span>Forums</span>
+      </a>
+    </li>
+    <li class="newsletter">
+      <a href="https://css-tricks.com/newsletters/">
+        <svg class="icon-nav-newsletter" width="26px" height="26px">
+          <use xlink:href="#icon-nav-newsletter"></use>
+        </svg>
+        <span>Newsletter</span>
+      </a>
+    </li>
+    <li class="jobs">
+      <a href="https://css-tricks.com/jobs/">
+        <svg class="icon-nav-jobs" width="26px" height="26px">
+          <use xlink:href="#icon-nav-jobs"></use>
+        </svg>
+        <span>Jobs</span>
+      </a>
+    </li>
+    <li class="guides">
+      <a href="https://css-tricks.com/guides/">
+        <svg class="icon-nav-guide" width="26px" height="26px">
+          <use xlink:href="#icon-nav-guide"></use>
+        </svg>
+        <span>Guides</span>
+      </a>
+    </li>
+    <!-- 
+    <li class="shop">
+      <a href="/shop/">
+        <svg class="icon-nav-shop" width="26px" height="26px">
+          <use xlink:href="#icon-nav-shop"></use>
+        </svg>
+        <span>Shop</span>
+      </a>
+    </li>
+    -->
+  </ul>
+
+</nav>
+<div class="page-wrap">
+
+  <header class="mega-header breadcrumbs-header">
+    <span><span><span><a href="https://css-tricks.com/">Home</a> » <span><a href="https://css-tricks.com/lodge/">The Lodge</a> » <span><a href="https://css-tricks.com/lodge/learn-jquery/">Learn jQuery from Scratch</a> » <span class="breadcrumb_last">#05: All About DOM Ready</span></span></span></span></span></span>  </header>
+
+  
+    <div class="single-video-wrapper">
+      <div class="fluid-width-video-wrapper" style="padding-top: 75%;"><iframe src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/73638927.html" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" name="fitvid0" frameborder="0"></iframe></div>    </div>
+
+  
+  <article class="module module-main module-lodge-video" id="post-148806">
+
+    
+    <nav class="lodge-video-nav">
+            <div class="lodge-video-prev">
+        <a href="https://css-tricks.com/lodge/learn-jquery/04-jquery-selectors-css3-selectors/" title="#04: jQuery Selectors are CSS3 Selectors">← Previous Video</a>
+      </div>
+            <div class="lodge-video-next">
+        <a href="https://css-tricks.com/lodge/learn-jquery/06-jquery-selector-extensions/" title="#06: jQuery Selector Extensions">Next Video →</a>
+      </div>
+          </nav>
+
+    <div class="article-content">
+      <p>We've talked a good bit about selectors. A jQuery selector like $("h1") will select all <code>&lt;h1&gt;</code> elements on the page. But what about... when it doesn't? Here's an example of when that selector would fail:</p>
+<p><span id="more-148806"></span></p>
+<pre rel="HTML" class=" language-markup"><code class=" language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>!doctype</span> <span class="token attr-name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>Learning jQuery<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>js/jquery-2.0.3.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript">
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"h1"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">"color"</span><span class="token punctuation">,</span> <span class="token string">"red"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+  
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Hello, World!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span></code></pre>
+<p>Will that <code>&lt;h1&gt;</code> element be red? Nope. WTF right? The reason it doesn't turn red is because when that jQuery code runs, there is no <code>&lt;h1&gt;</code>
+ for it to find yet. It hasn't yet made it to the DOM. That is because 
+your HTML is read from top to bottom. Imagine the browser reading the 
+very first line, then the next, then the next. When it gets down to the 
+line with the jQuery selector on it, it only knows about that line and 
+all above it. So no <code>&lt;h1&gt;</code> is found and no color changing happens. </p>
+<p>How do we deal with this problem? The best way to handle this is to 
+load JavaScript files at the bottom of your page. Right above the 
+closing <code>&lt;/body&gt;</code> tag. JavaScript files "block" page 
+rendering as they are downloaded and ran, so it will make your page load
+ faster anyway. But that means that our jQuery selectors will find 
+everything they are supposed to find as a bonus. </p>
+<p>Loading the scripts at the bottom would look like this:</p>
+<pre rel="HTML" class=" language-markup"><code class=" language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>!doctype</span> <span class="token attr-name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>Learning jQuery<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+  
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Hello, World!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>js/jquery-2.0.3.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript">
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"h1"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">"color"</span><span class="token punctuation">,</span> <span class="token string">"red"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span></code></pre>
+<p>But sometimes scripts are loaded in the head. There are all kinds of 
+excuses for it, mostly bad, but hey let's not get too judge-y without 
+details =).</p>
+<p>We can still fix the not-finding-elements issue in a pretty 
+satisfactory way even if we are forced to load scripts in the head. We 
+do it through the jQuery "DOM Ready" function. Literally, when the 
+document is done and ready to be manipulated. It looks like this:</p>
+<pre rel="jQuery" class=" language-javascript"><code class=" language-javascript"><span class="token function">$</span><span class="token punctuation">(</span>document<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ready</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>There is a shorter version which does the exact same thing:</p>
+<pre rel="jQuery" class=" language-javascript"><code class=" language-javascript"><span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Putting your code inside a function like that ensures it won't run 
+until the document is ready. It's actually a rather clever bit of code 
+that does it, which of course is difficult to do cross-browser. What is 
+cool about it is that it is pretty fast. It's not the same as waiting 
+for the entire window to load, which is slow, because it waits for all 
+resources to be done downloading before firing. DOM ready happens much 
+sooner. If you do need to wait for resources to be done (e.g. you need 
+to measure an image), you can wait for that like this:</p>
+<pre rel="jQuery" class=" language-javascript"><code class=" language-javascript"><span class="token function">$</span><span class="token punctuation">(</span>window<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Fixing our earlier JavaScript-in-the-head problem with DOM ready, the code would look like this:</p>
+<pre rel="HTML" class=" language-markup"><code class=" language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>!doctype</span> <span class="token attr-name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>Learning jQuery<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>js/jquery-2.0.3.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript">
+  <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"h1"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">"color"</span><span class="token punctuation">,</span> <span class="token string">"red"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+  
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Hello, World!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span></code></pre>
+
+      
+    </div>
+
+  </article>
+
+  <div class="end-of-article-ads">
+
+      <div class="bsap-doubles side-by-side">
+
+      <div id="bsap_1250418" class="bsap bsap_1250418" data-serve="CV7DV5V">
+<div class="bsa_it one"><div class="bsa_it_ad ad0 odd ">
+<a target="_blank" href="https://srv.buysellads.com/ads/click/x/GTND42QICAYILKQICVYLYKQMCKSI42JWCWAI4Z3JCW7I5K3YCKBDE5QKC6BIC27JFTAI6K3EHJNCLSIZ" rel="nofollow">
+<span class="bsa_it_i">
+<img alt="Let us handle your images" src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/912cf8032e784fa79047652cbfb04c06-1518818645.png" width="120" height="90">
+</span>
+</a>
+<a target="_blank" href="https://srv.buysellads.com/ads/click/x/GTND42QICAYILKQICVYLYKQMCKSI42JWCWAI4Z3JCW7I5K3YCKBDE5QKC6BIC27JFTAI6K3EHJNCLSIZ" rel="nofollow">
+<span class="bsa_it_t">Let us handle your images</span>
+<span class="bsa_it_d">imgix: Powerful image processing and CDN delivery with one simple API</span>
+</a>
+<div style="clear:both"></div>
+</div><div class="bsa_it_ad ad1  even">
+<a target="_blank" href="https://srv.buysellads.com/ads/click/x/GTND42QICAYILKQICVYLYKQMCKSI453ECTBD6Z3JCW7I5KQLCA7I5K7KC6BIC27JFTAI6K3EHJNCLSIZ" rel="nofollow">
+<span class="bsa_it_i">
+<img alt="Responsive HTML5/CSS3" src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/288553-1441871746.jpg" width="120" height="90">
+</span>
+</a>
+<a target="_blank" href="https://srv.buysellads.com/ads/click/x/GTND42QICAYILKQICVYLYKQMCKSI453ECTBD6Z3JCW7I5KQLCA7I5K7KC6BIC27JFTAI6K3EHJNCLSIZ" rel="nofollow">
+<span class="bsa_it_t">Responsive HTML5/CSS3</span>
+<span class="bsa_it_d">100% Hand Coded Markup by The Best Front-end Developers. Get a Free Quote Now!</span>
+</a>
+<div style="clear:both"></div>
+</div><span class="bsa_it_p">
+<a href="http://www.buysellads.com/buy/detail/1098/zone/1250418?utm_source=site_1098&amp;utm_medium=website&amp;utm_campaign=imagetext&amp;utm_content=zone_1250418">ads by BSA</a>
+</span>
+</div>
+
+<script type="text/javascript" id="auto_1" class="ignoreme"> if (typeof(BSACallback) !== 'undefined') BSACallback(); </script></div>
+
+    </div>
+  
+</div>
+
+<div class="comments-col">
+      <div class="module-comments">
+      <section id="comments">
+
+
+
+  <h2 class="comments-title">
+    Comments
+  </h2>
+
+  <p class="center hide" id="show-comments-wrap">
+    <button id="show-comments-button" class="button">Show Comments</button>
+  </p>
+
+  <ol class="commentlist group" id="commentlist">
+    
+    <li class="comment byuser comment-author-rgilmour70gmail-com even thread-even depth-1" id="li-comment-675087">
+
+      <div class="grid group comment-wrap" id="comment-675087">
+
+        <div class="comment-avatar grid-1-5">
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" class="lazyload-gravatar" alt="User Avatar" data-src="https://secure.gravatar.com/avatar/abb17d51f73124c643b156bb72bf7808?s=160&amp;d=retro&amp;r=pg" width="50" height="50">
+        </div>
+
+        <div class="comment-body group grid-4-5">
+
+          <div class="comment-author-wrap vcard">
+            <div class="comment-author">Ron Gilmour</div> <div class="comment-time"><a href="https://css-tricks.com/lodge/learn-jquery/05-dom-ready/#comment-675087"><span class="screen-reader">Permalink to comment</span>#</a> <time datetime="2013-11-17T23:20:54+00:00">November 17, 2013</time></div>
+            
+          </div>
+          
+          <div class="comment-content">
+
+            <p>Huh. I had this idea that jQuery <em>had</em> to have a 
+“document ready” wrapper, but I guess that’s only if your code is in the
+ head. Thanks for clarifying that. I’m going to go clean up some code 
+now.</p>
+
+            <div class="reply">
+              <a rel="nofollow" class="comment-reply-link" href="#comment-675087" onclick='return addComment.moveForm( "comment-675087", "675087", "respond", "148806" )' aria-label="Reply to Ron Gilmour">Reply ↓</a>            </div><!-- .reply -->
+
+          </div>
+        </div>
+      </div>
+    
+  </li><!-- #comment-## -->
+
+    <li class="comment byuser comment-author-richfinelli odd alt thread-odd thread-alt depth-1" id="li-comment-834648">
+
+      <div class="grid group comment-wrap" id="comment-834648">
+
+        <div class="comment-avatar grid-1-5">
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" class="lazyload-gravatar" alt="User Avatar" data-src="https://secure.gravatar.com/avatar/4c058eb9dbf1672944893807119747fa?s=160&amp;d=retro&amp;r=pg" width="50" height="50">
+        </div>
+
+        <div class="comment-body group grid-4-5">
+
+          <div class="comment-author-wrap vcard">
+            <div class="comment-author">Richard Finelli</div> <div class="comment-time"><a href="https://css-tricks.com/lodge/learn-jquery/05-dom-ready/#comment-834648"><span class="screen-reader">Permalink to comment</span>#</a> <time datetime="2013-12-14T11:39:25+00:00">December 14, 2013</time></div>
+            
+          </div>
+          
+          <div class="comment-content">
+
+            <p>Yes, I was under the same impression as Ron. And now I 
+understand what the shorthand code is for dom ready which clarifies a 
+bunch.</p>
+
+            <div class="reply">
+              <a rel="nofollow" class="comment-reply-link" href="#comment-834648" onclick='return addComment.moveForm( "comment-834648", "834648", "respond", "148806" )' aria-label="Reply to Richard Finelli">Reply ↓</a>            </div><!-- .reply -->
+
+          </div>
+        </div>
+      </div>
+    
+  </li><!-- #comment-## -->
+
+    <li class="comment byuser comment-author-rickgarc even thread-even depth-1" id="li-comment-1596057">
+
+      <div class="grid group comment-wrap" id="comment-1596057">
+
+        <div class="comment-avatar grid-1-5">
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" class="lazyload-gravatar" alt="User Avatar" data-src="https://secure.gravatar.com/avatar/07ffd633dc353f62b46f65d637120f37?s=160&amp;d=retro&amp;r=pg" width="50" height="50">
+        </div>
+
+        <div class="comment-body group grid-4-5">
+
+          <div class="comment-author-wrap vcard">
+            <div class="comment-author">ricardo garcia</div> <div class="comment-time"><a href="https://css-tricks.com/lodge/learn-jquery/05-dom-ready/#comment-1596057"><span class="screen-reader">Permalink to comment</span>#</a> <time datetime="2015-07-23T16:41:02+00:00">July 23, 2015</time></div>
+            
+          </div>
+          
+          <div class="comment-content">
+
+            <p>I didn’t know there was a shorthand code for this. I’ve 
+never seen that in any turial which means this is getting better and 
+better. Thanks Chris I love your Methodology :)</p>
+
+            <div class="reply">
+              <a rel="nofollow" class="comment-reply-link" href="#comment-1596057" onclick='return addComment.moveForm( "comment-1596057", "1596057", "respond", "148806" )' aria-label="Reply to ricardo garcia">Reply ↓</a>            </div><!-- .reply -->
+
+          </div>
+        </div>
+      </div>
+    
+  </li><!-- #comment-## -->
+
+    <li class="comment byuser comment-author-greg odd alt thread-odd thread-alt depth-1" id="li-comment-1596684">
+
+      <div class="grid group comment-wrap" id="comment-1596684">
+
+        <div class="comment-avatar grid-1-5">
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" class="lazyload-gravatar" alt="User Avatar" data-src="https://secure.gravatar.com/avatar/85b445f2c587b02976da5782b5b3ef2b?s=160&amp;d=retro&amp;r=pg" width="50" height="50">
+        </div>
+
+        <div class="comment-body group grid-4-5">
+
+          <div class="comment-author-wrap vcard">
+            <div class="comment-author">Greg</div> <div class="comment-time"><a href="https://css-tricks.com/lodge/learn-jquery/05-dom-ready/#comment-1596684"><span class="screen-reader">Permalink to comment</span>#</a> <time datetime="2015-08-29T14:08:48+00:00">August 29, 2015</time></div>
+            
+          </div>
+          
+          <div class="comment-content">
+
+            <p>Hi, thanks for this explanation. Makes things clear. Can you confirm that the following code samples are equivalent?</p>
+<pre><code>$(document).ready(function(){
+    //example
+    $('h1').css("color", "blue");
+});
+</code></pre>
+<p>same as</p>
+<pre><code>jQuery(document).ready(function($){
+    //example
+    $('h1').css("color", "blue");
+});
+</code></pre>
+<p>same as</p>
+<pre><code>$(function() {
+    //example
+    $('h1').css("color", "blue");
+});
+</code></pre>
+<p>same as</p>
+<pre><code>jQuery(function($) {
+    //example
+    $('h1').css("color", "blue");
+
+});
+</code></pre>
+<p>I think I like <code>jQuery(function($)</code>&gt; best because I don’t have to include a noConflict.js file in the document.</p>
+
+            <div class="reply">
+              <a rel="nofollow" class="comment-reply-link" href="#comment-1596684" onclick='return addComment.moveForm( "comment-1596684", "1596684", "respond", "148806" )' aria-label="Reply to Greg">Reply ↓</a>            </div><!-- .reply -->
+
+          </div>
+        </div>
+      </div>
+    
+  <ul class="children">
+
+    <li class="comment byuser comment-author-chriscoyier bypostauthor even depth-2" id="li-comment-1596706">
+
+      <div class="grid group comment-wrap" id="comment-1596706">
+
+        <div class="comment-avatar grid-1-5">
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" class="lazyload-gravatar" alt="User Avatar" data-src="https://secure.gravatar.com/avatar/e6e3b0dc1a26476da301047fb70784e5?s=160&amp;d=retro&amp;r=pg" width="50" height="50">
+        </div>
+
+        <div class="comment-body group grid-4-5">
+
+          <div class="comment-author-wrap vcard">
+            <div class="comment-author">Chris Coyier</div> <div class="comment-time"><a href="https://css-tricks.com/lodge/learn-jquery/05-dom-ready/#comment-1596706"><span class="screen-reader">Permalink to comment</span>#</a> <time datetime="2015-09-01T07:59:24+00:00">September 1, 2015</time></div>
+            
+          </div>
+          
+          <div class="comment-content">
+
+            <p>Those will indeed all function the same. And yes the last
+ one (same as the second one) will allow you to safely use the $ inside 
+without conflict. You don’t always need a DOM ready statement though 
+(like all four of those are), for example if you correctly load scripts 
+at the bottom of the page (the DOM will already be ready). So this is a 
+pattern with the same safetey without the DOM Ready:</p>
+<pre><code>(function($){  
+  // use $ here safely
+})(jQuery);
+</code></pre>
+
+            <div class="reply">
+                          </div><!-- .reply -->
+
+          </div>
+        </div>
+      </div>
+    
+  </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+    <li class="comment odd alt thread-even depth-1" id="li-comment-1606429">
+
+      <div class="grid group comment-wrap" id="comment-1606429">
+
+        <div class="comment-avatar grid-1-5">
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" class="lazyload-gravatar" alt="User Avatar" data-src="https://secure.gravatar.com/avatar/cf048a7412e7e0049cb8a966c869fa8c?s=160&amp;d=retro&amp;r=pg" width="50" height="50">
+        </div>
+
+        <div class="comment-body group grid-4-5">
+
+          <div class="comment-author-wrap vcard">
+            <div class="comment-author">Rachel</div> <div class="comment-time"><a href="https://css-tricks.com/lodge/learn-jquery/05-dom-ready/#comment-1606429"><span class="screen-reader">Permalink to comment</span>#</a> <time datetime="2017-01-30T19:29:33+00:00">January 30, 2017</time></div>
+            
+          </div>
+          
+          <div class="comment-content">
+
+            <p>great video :) like when you are like we could do this too or whatever… lol</p>
+
+            <div class="reply">
+              <a rel="nofollow" class="comment-reply-link" href="#comment-1606429" onclick='return addComment.moveForm( "comment-1606429", "1606429", "respond", "148806" )' aria-label="Reply to Rachel">Reply ↓</a>            </div><!-- .reply -->
+
+          </div>
+        </div>
+      </div>
+    
+  </li><!-- #comment-## -->
+  </ol>
+
+
+
+  <div id="respond" class="respond group">
+
+    
+      
+		<div id="respond" class="comment-respond">
+							<h3 id="reply-title" class="comment-reply-title">Leave a Comment					<small><a rel="nofollow" id="cancel-comment-reply-link" href="https://css-tricks.com/lodge/learn-jquery/05-dom-ready/#respond" style="display:none;">Cancel reply</a></small>
+				</h3>
+						<form id="commentform" class="comment-form">
+				<iframe title="Comment Form" src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/a.html" style="width: 100%; height: 55px; border: 0px none;" name="jetpack_remote_comment" class="jetpack_remote_comment" id="jetpack_remote_comment" sandbox="allow-same-origin allow-top-navigation allow-scripts allow-forms allow-popups" scrolling="no"></iframe>
+									<!--[if !IE]><!-->
+					<script>
+						document.addEventListener('DOMContentLoaded', function () {
+							var commentForms = document.getElementsByClassName('jetpack_remote_comment');
+							for (var i = 0; i < commentForms.length; i++) {
+								commentForms[i].allowTransparency = false;
+								commentForms[i].scrolling = 'no';
+							}
+						});
+					</script>
+					<!--<![endif]-->
+							<input id="ak_js" name="ak_js" value="1537189718379" type="hidden"></form>
+		</div>
+
+		
+		<input name="comment_parent" id="comment_parent" value="" type="hidden">
+
+		
+      <div class="comment-reminders">
+
+        <div>
+          <h4>Posting Code!</h4>
+
+          <p>You may write comments in <strong>Markdown</strong>. This 
+makes code easy to post, as you can write inline code like 
+`&lt;div&gt;this&lt;/div&gt;` or multiline blocks of code in triple 
+backtick fences (```) with double new lines before and after.</p>
+        </div>
+
+        <div>
+          <h4>Code of Conduct</h4>
+
+          <p>Absolutely anyone is welcome to submit a comment here. But 
+not all comments will be posted. Think of it like writing a letter to 
+the editor. All submitted comments will be read, but not all published. 
+Published comments will be on-topic, helpful, and further the discussion
+ or debate.</p>
+        </div>
+
+        <div>
+          <h4>Want to tell us something privately?</h4>
+
+          <p>Feel free to use our <a href="https://css-tricks.com/contact/">contact form</a>. That's a great place to let us know about typos or anything off-topic.</p>
+        </div>
+
+      </div>
+
+    
+  </div>
+
+</section>    </div>
+  </div>
+</div>
+
+<aside class="entry-unrelated sidebar sidebar-right">
+
+  
+          <div id="all-ads"><div class="single-ad ad-4">
+    <div class="module module-hellosign">
+      <a href="https://synd.co/2IqyuXF" target="_blank" rel="nooopener">
+        <svg viewBox="-4 -4 300 110"><path d="M67.64,15.33C69,10.58,69.91,4.57,66,1.52,63-.91,58.48,0,54.78,1.31,22.86,12.55-.18,45.28,0,79.12,0,83.94.56,89,3.32,93c2.39,3.43,6.2,5.63,10.11,7.12,20.63,7.86,44.65-2.24,59.5-18.58s22.55-37.77,29.89-58.59C84.32,44.19,86.18,77,70.24,100.3a90.66,90.66,0,0,1,26.86-28c-.49,6.6-.82,13.78,2.93,19.23a17.86,17.86,0,0,1,23.77-19.77,89.3,89.3,0,0,0-16.2,29.09c16.85-1.78,31.9-15,35.9-31.42a30.83,30.83,0,0,0-3.92,25.83C161.4,91.59,175,66.06,197.08,63.9a5.71,5.71,0,0,1,3.76.58c1.49,1,1.84,3,1.87,4.81a25.66,25.66,0,0,1-37.26,23.29A289.18,289.18,0,0,0,292.81,73.8" fill="none"></path></svg>
+      </a>
+    </div>
+    <div class="interlude">
+      <a href="https://synd.co/2IqyuXF" target="_blank" rel="nooopener">The HelloSign API</a> allows you to collect legally binding signatures from your own app.
+    </div>
+  </div><div class="single-ad ad-3">
+    <div class="module module-monday">
+      <a href="https://ad.doubleclick.net/ddm/trackclk/N728909.1044586DAVIDWALSH.NAME/B21046303.220247477;dc_trk_aid=418624587;dc_trk_cid=101013389;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=" target="_blank" rel="nooopener">
+        <img src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/monday-visual.jpg" alt="Monday: Simple Project Management Tool" class="monday-image">
+      </a>
+    </div>
+    <img src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/B21046303.gif" alt="">
+  </div><div class="single-ad ad-2">
+    <div class="module module-jetpack">
+      <a href="https://jetpack.com/?aff=8638" target="_blank" rel="nooopener">
+        <img src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/jetpack-builder.svg" alt="Jetpack">
+      </a>
+    </div>
+    <div class="interlude">
+      CSS-Tricks uses <a href="https://css-tricks.com/jetpack">Jetpack</a> for loads of WordPress functionality like backups and social integration.
+    </div>
+  </div><div class="single-ad ad-1">
+    <div class="module module-wufoo">
+      <a href="https://ad.doubleclick.net/ddm/clk/303181152;128762502;s" class="wufoo-image-wrap">
+        <img src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/wufoo-clocks.png" alt="" class="wufoo-logo">
+      </a>
+    </div>
+    <div class="interlude">
+      <a href="https://ad.doubleclick.net/ddm/clk/303181152;128762502;s">Wufoo</a> powers all our web forms here at CSS-Tricks.
+    </div>
+    <img src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/B7043538.gif" alt="Wufoo Sponsorship">
+  </div></div>
+    
+  
+</aside>
+
+
+  </div>
+
+  <footer class="site-footer footer-newsletter">
+
+    <div class="footer-section-1"></div>
+
+    <div class="footer-section-2">
+
+      <img src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/get-the-newsletter.png" alt="Get the Newsletter!">
+
+      <form action="//chriscoyier.us2.list-manage.com/subscribe/post?u=155f5a9ccc4e24c318130cace&amp;id=197f127a68" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
+
+        <p class="mc-field-group">
+          <label for="mce-EMAIL" class="screen-reader">Email Address</label>
+          <input name="EMAIL" class="required email mailchimp-email-input" id="mce-EMAIL" type="email">
+          <svg class="icon-email" width="20px" height="15px">
+            <use xlink:href="#icon-email"></use>
+          </svg>
+          <input value="Subscribe" name="Subscribe" id="mc-embedded-subscribe" class="button subscribe-button" type="submit">
+        </p>
+        <div id="mce-responses" class="clear">
+          <div class="response" id="mce-error-response" style="display:none"></div>
+          <div class="response" id="mce-success-response" style="display:none"></div>
+        </div>
+        <div style="position: absolute; left: -9999px; top: -9999px"><input name="b_155f5a9ccc4e24c318130cace_197f127a68" type="text"></div>
+
+      </form>
+    </div>
+
+    <div class="footer-section-3">
+      Lots of great stuff that isn't published anywhere else!
+    </div>
+
+  </footer>
+
+  <footer class="site-footer footer-mediatemple">
+
+    <div class="footer-section-1"></div>
+    <div class="footer-section-2">
+      <a href="https://mediatemple.net/landing/csstricks/?utm_source=CSS-Tricks&amp;utm_medium=display&amp;utm_campaign=heaeder-box"><img class="mt-img" src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/mediatemple-logo-white-superwide.svg" alt="Media Temple"></a>
+    </div>
+    <div class="footer-section-3">
+      <a href="https://mediatemple.net/landing/csstricks/?utm_source=CSS-Tricks&amp;utm_medium=display&amp;utm_campaign=heaeder-box">CSS-Tricks web host since day one. Save 20% with code <strong>CSSTRICKS</strong>.</a>
+    </div>
+
+  </footer>
+
+  <footer class="site-footer footer-colophon">
+
+    <div class="footer-section-1">
+      <svg class="icon-footer-star" width="280px" height="280px">
+        <use xlink:href="#icon-logo-star"></use>
+      </svg>
+    </div>
+
+    <div class="footer-section-2">
+      <div>
+        <p>CSS-Tricks* is created, written by, and maintained by <a href="https://chriscoyier.net/">Chris Coyier</a> and <a href="https://css-tricks.com/about/">a team</a> of swell people. It is built on <a href="https://wordpress.org/">WordPress</a>, hosted by <a href="https://mediatemple.net/landing/csstricks/?utm_source=CSS-Tricks&amp;utm_medium=display&amp;utm_campaign=footer-link">Media Temple</a>. It is made possible through <a href="https://css-tricks.com/advertising/">sponsorships</a> from products and services we like.</p>
+
+        <p class="mega-big-time-warning"><small>*May or may not contain any actual "CSS" or "Tricks".</small></p>
+
+        <iframe id="twitter-widget-0" scrolling="no" allowtransparency="true" class="twitter-follow-button twitter-follow-button-rendered" style="position: static; visibility: visible; width: 182px; height: 20px;" title="Twitter Follow Button" src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/follow_button.html" data-screen-name="css" frameborder="0"></iframe>
+      </div>
+
+      <nav>
+        <a href="https://css-tricks.com/contact/" class="footer-contact-link">Contact</a>
+        <a href="https://css-tricks.com/about/">About</a>
+        <a href="https://css-tricks.com/archives/">Archives</a>
+        <a href="https://css-tricks.com/advertising/">Advertise</a>
+        <a href="https://css-tricks.com/jobs/">Jobs</a>
+        <a href="https://css-tricks.com/license/">License</a>
+        <a href="https://css-tricks.com/subscription-options/">Subscribe</a>
+        <a href="https://css-tricks.com/random">Random</a>
+        <a href="https://css-tricks.com/guest-posting/">Guest Posting</a>
+      </nav>
+
+    </div>
+
+    <div class="footer-section-3">
+
+      <div class="module module-jobs">
+
+  <h4 class="h4">Front-End Jobs</h4>
+
+  
+  <ul class="job-list">
+
+        <li>
+            <a href="https://codepen.io/url/job/nDpALn">
+        <strong>
+          Bunny Inc.        </strong>
+        is hiring a
+        Head of Engineering      </a>
+    </li>
+        <li>
+            <a href="https://codepen.io/url/job/rEbkwn">
+        <strong>
+          Beek        </strong>
+        is hiring a
+        Front end Engineer      </a>
+    </li>
+        <li>
+            <a href="https://codepen.io/url/job/zpdRRz">
+        <strong>
+          InVision AG        </strong>
+        is hiring a
+        Frontend Developer (Javascript)      </a>
+    </li>
+    
+  </ul>
+
+  <div class="button-wrap">
+
+    <a href="https://css-tricks.com/jobs/" class="button full-width-button">See More Jobs</a>
+    <a href="https://codepen.io/job/new/" class="button full-width-button">Post a Job</a>
+  </div>
+
+</div>
+    </div>
+
+  </footer>
+
+  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" display="none"><symbol id="icon-anchor" viewBox="0 0 54.89 64"><title>icon-anchor</title><path fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="2" d="M26.96 13v50"></path><path fill="none" stroke="#000" stroke-linejoin="bevel" stroke-width="2" d="M13.96 50l-10-3-3 10M39.96 50l10-3 4 10"></path><path d="M49.71 47A24 24 0 0 1 27 63 24 24 0 0 1 4.21 47M17.96 17h18" fill="none" stroke="#000" stroke-linejoin="bevel" stroke-width="2"></path><circle cx="26.96" cy="7" r="6" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="2"></circle></symbol><symbol id="icon-close" viewBox="0 0 95.08 95.09"><title>icon-close</title><path d="M58.31 47.47l34.58-34.58a7.63 7.63 0 0 0 0-10.69 7.63 7.63 0 0 0-10.69 0L47.62 36.78 13 2.19a7.63 7.63 0 0 0-10.69 0 7.63 7.63 0 0 0 0 10.69l34.6 34.6L2.33 82.07a7.29 7.29 0 0 0 0 10.69 7.63 7.63 0 0 0 10.69 0l34.6-34.6 34.6 34.6a7.27 7.27 0 0 0 10.68 0 7.63 7.63 0 0 0 0-10.69z" data-name="Layer 1"></path></symbol><symbol id="icon-email" viewBox="0 0 100 68.89"><title>icon-email</title><path d="M36.25 38.44L47.74 49.1a3.33 3.33 0 0 0 4.51 0l11.5-10.66 24.69 23.78H11.56zM93.33 11v46.6L68.68 33.85zM6.67 11l24.65 22.85L6.67 57.64zm5.1-4.37h76.46L50 42.12zM4.44 0A4.51 4.51 0 0 0 0 4.44v60a4.51 4.51 0 0 0 4.44 4.44h91.12a4.51 4.51 0 0 0 4.44-4.44v-60A4.51 4.51 0 0 0 95.56 0z" data-name="Layer 1"></path></symbol><symbol id="icon-link" viewBox="0 0 100 58.84"><title>icon-link</title><path d="M78.47 48H49.21a10.66 10.66 0 0 1-9-4.91h10.58A21.57 21.57 0 0 0 71.7 26.64h6.76a10.67 10.67 0 0 1 0 21.33zm-67.6-26.47a10.67 10.67 0 0 1 10.67-10.66H50.8A10.59 10.59 0 0 1 58.34 14a10.94 10.94 0 0 1 1.43 1.79H49.21a21.57 21.57 0 0 0-20.92 16.4h-6.76a10.67 10.67 0 0 1-10.66-10.66zm39.92 10.66H39.86a10.68 10.68 0 0 1 9.35-5.54h10.93a10.67 10.67 0 0 1-9.35 5.54zM100 37.31a21.53 21.53 0 0 0-21.53-21.53h-6.92A21.53 21.53 0 0 0 50.8 0H21.54a21.53 21.53 0 0 0 0 43.06h6.83v-.31A21.41 21.41 0 0 0 34 52.53a21.4 21.4 0 0 0 15.2 6.31h29.26A21.56 21.56 0 0 0 100 37.31z"></path></symbol><symbol id="icon-logo-star" viewBox="0 0 362.62 388.52"><title>icon-logo-star</title><path d="M156.58 239l-88.3 64.75c-10.59 7.06-18.84 11.77-29.43 11.77-21.19 0-38.85-18.84-38.85-40 0-17.69 14.13-30.64 27.08-36.52l103.6-44.74-103.6-45.92C13 142.46 0 129.51 0 111.85 0 90.66 18.84 73 40 73c10.6 0 17.66 3.53 28.25 11.77l88.3 64.75-11.74-104.78C141.28 20 157.76 0 181.31 0s40 18.84 36.5 43.56L206 149.52l88.3-64.75C304.93 76.53 313.17 73 323.77 73a39.2 39.2 0 0 1 38.85 38.85c0 18.84-12.95 30.61-27.08 36.5l-103.61 45.91L335.54 239c14.13 5.88 27.08 18.83 27.08 37.67 0 21.19-18.84 38.85-40 38.85-9.42 0-17.66-4.71-28.26-11.77L206 239l11.77 104.78c3.53 24.72-12.95 44.74-36.5 44.74s-40-18.84-36.5-43.56z"></path></symbol><symbol id="icon-menu" viewBox="0 0 100 68.42"><title>icon-menu</title><path d="M94.73 10.53H5.27c-7 0-7-10.53 0-10.53h89.46c6.88.14 6.88 10.38 0 10.53zm0 18.42H5.27c-7 0-7 10.53 0 10.53h89.46c6.86-.17 6.86-10.38 0-10.53zm0 28.94H5.27c-7 0-7 10.53 0 10.53h89.46c7.03 0 7.03-10.53 0-10.53z" data-name="Layer 1"></path></symbol><symbol id="icon-nav-almanac" viewBox="0 0 64 64"><path fill="none" d="M7 1h46v62H7z"></path><path fill="none" vector-effect="non-scaling-stroke" d="M15 63V2M20 15h28M20 21h28"></path></symbol><symbol id="icon-nav-forums" viewBox="0 0 64 64"><path d="M10 15h44v2H10zM10 25h44v2H10zM10 35h44v2H10z"></path><path d="M17 61.174L32.37 48H64V4H0v44h17v13.174zM2 46V6h60v40H31.63L19 56.826V46H2z"></path></symbol><symbol id="icon-nav-gallery" viewBox="0 0 64 64"><path d="M0 54h64V10H0v44zm2-2v-4.544l21.952-19.09 12.156 12.156 6.051-8.068L62 49.459V52H2zm60-40v34.826l-20.16-17.28-5.949 7.932-11.843-11.844L2 44.805V12h60z"></path><path d="M51 28c3.309 0 6-2.691 6-6s-2.691-6-6-6-6 2.691-6 6 2.691 6 6 6zm0-10c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4z"></path></symbol><symbol id="icon-nav-guide" viewBox="0 0 64 56.9"><title>icon-nav-guide</title><path d="M1 55.45l21-8 20 8 21-8v-46l-21 8-20-8-21 8v46zM22 1.45v46M42 9.45v46"></path></symbol><symbol id="icon-nav-home" viewBox="0 0 64 64"><path d="M32 3L2 33h9v30h12V47h16v16h12V33h11z"></path></symbol><symbol id="icon-nav-jobs" viewBox="0 0 64 64"><path d="M41 37.586L23.414 20l12-12-5.305-5.302-.688.486c-.025.018-2.537 1.769-5.671 1.769-2.244 0-4.277-.896-6.043-2.66L17 1.586-.414 19 12 31.414l10-10L39.586 39l-3 3L57 62.414 64.414 55 44 34.586l-3 3zM2.414 19L17.026 4.388c1.983 1.703 4.241 2.565 6.724 2.565 2.722 0 4.992-1.057 6.103-1.687L32.586 8 12 28.586 2.414 19zM57 59.586L39.414 42 44 37.414 61.586 55 57 59.586z"></path></symbol><symbol id="icon-nav-newsletter" viewBox="0 0 64 64"><path d="M64 12H0v39h64V12zm-4.395 2L32 31.81 4.395 14h55.21zM2 49V14.835L32 34.19l30-19.355V49H2z"></path></symbol><symbol id="icon-nav-shop" viewBox="0 0 64 64"><path d="M44 18h10v45H10V18h10z"></path><path d="M22 24V11c0-5.523 4.477-10 10-10s10 4.477 10 10v13"></path></symbol><symbol id="icon-nav-snippets" viewBox="0 0 64 64"><path d="M0 64h64.414L0-.414V64zm2-9h6v-2H2v-6h4v-2H2v-6h6v-2H2v-6h4v-2H2v-6h6v-2H2V4.414L59.586 62H2v-7z"></path><path d="M13 27.586V55h27.414L13 27.586zm2 4.828L35.586 53H15V32.414zM64.375 46.375l-2.472-9.886L25-.414 17.586 7l36.903 36.903 9.886 2.472zm-2.75-2.75l-6.114-1.528L26.414 13 31 8.414l29.097 29.097 1.528 6.114zM25 2.414L29.586 7 25 11.586 20.414 7 25 2.414z"></path></symbol><symbol id="icon-nav-video" viewBox="0 0 64 64"><path d="M46 30l17-10v32L46 42v10H1V20h45zM6 28h4M14 28h4"></path><path d="M7 36h18v10H7zM6 12h26l8 8"></path></symbol><symbol id="icon-search" viewBox="0 0 100 100"><title>icon-search</title><path d="M80.65 66.78a33.55 33.55 0 0 1-47.44-47.44 33.55 33.55 0 1 1 47.44 47.44zm6.73-54.16a43.06 43.06 0 0 0-65.32 55.71L2 88.39A6.8 6.8 0 0 0 11.61 98l20.06-20.06a43.06 43.06 0 0 0 55.71-65.32z"></path></symbol><symbol id="icon-star" viewBox="0 0 100 95.52"><title>icon-star</title><path d="M64.19 28.77a5.17 5.17 0 0 0 3.9 2.83s29.27-3 31.74 4.61-23 22.39-23 22.39a5.17 5.17 0 0 0-1.49 4.58s11.91 26.9 5.42 31.61S52.4 79.87 52.4 79.87a5.21 5.21 0 0 0-2.41-.6 5.14 5.14 0 0 0-2.41.6S25.68 99.5 19.2 94.79s5.42-31.61 5.42-31.61a5.18 5.18 0 0 0-1.49-4.58S-2.31 43.83.17 36.21s31.74-4.61 31.74-4.61a5.19 5.19 0 0 0 3.9-2.83S42 0 50 0s14.19 28.77 14.19 28.77z" data-name="Layer 1"></path></symbol><symbol id="icon-tag" viewBox="0 0 100 99.98"><title>icon-tag</title><path d="M42 42a10.07 10.07 0 1 1 0-14.24A10 10 0 0 1 42 42zm56 6.5l-43.74-44a7.19 7.19 0 0 0-5-2.25L8 0a7.55 7.55 0 0 0-8 7v1l2.5 41a7.11 7.11 0 0 0 2.25 4.75l43.49 44a7.2 7.2 0 0 0 5.24 2.25 6.81 6.81 0 0 0 5.25-2.25L97.72 59A7.47 7.47 0 0 0 98 48.5z"></path></symbol></svg>
+  <script type="text/javascript">
+/* <![CDATA[ */
+var bblpAJAX = {"ajaxurl":"https:\/\/css-tricks.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/scripts.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var pollsL10n = {"ajax_url":"https:\/\/css-tricks.com\/wp-admin\/admin-ajax.php","text_wait":"Your last request is still being processed. Please wait a while ...","text_valid":"Please choose a valid poll answer.","text_multiple":"Maximum number of choices allowed: ","show_loading":"0","show_fading":"1"};
+/* ]]> */
+</script>
+<script src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/polls-js.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var markdownify = {"ajax_url":"\/wp-admin\/admin-ajax.php","nonce":"6f7aba1e7e"};
+/* ]]> */
+</script>
+<script src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/markdownify.js"></script>
+<script src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/comment-reply.js"></script>
+<script src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/search-widget.js"></script>
+<script src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/wp-embed.js"></script>
+<script async="async" src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/form.js"></script>
+
+		<!--[if IE]>
+		<script type="text/javascript">
+			if ( 0 === window.location.hash.indexOf( '#comment-' ) ) {
+				// window.location.reload() doesn't respect the Hash in IE
+				window.location.hash = window.location.hash;
+			}
+		</script>
+		<![endif]-->
+		<script type="text/javascript">
+			(function () {
+				var comm_par_el = document.getElementById( 'comment_parent' ),
+					comm_par = ( comm_par_el && comm_par_el.value ) ? comm_par_el.value : '',
+					frame = document.getElementById( 'jetpack_remote_comment' ),
+					tellFrameNewParent;
+
+				tellFrameNewParent = function () {
+					if ( comm_par ) {
+						frame.src = "https://jetpack.wordpress.com/jetpack-comment/?blogid=45537868&postid=148806&comment_registration=0&require_name_email=1&stc_enabled=1&stb_enabled=0&show_avatars=1&avatar_default=retro&greeting=Leave+a+Comment&greeting_reply=Leave+a+Reply+to+%25s&color_scheme=light&lang=en_US&jetpack_version=6.5&show_cookie_consent=10&has_cookie_consent=0&sig=994755b3a90bcc4f55f5d83da744d172d6a73ff2#parent=https%3A%2F%2Fcss-tricks.com%2Flodge%2Flearn-jquery%2F05-dom-ready%2F" + '&replytocom=' + parseInt( comm_par, 10 ).toString();
+					} else {
+						frame.src = "https://jetpack.wordpress.com/jetpack-comment/?blogid=45537868&postid=148806&comment_registration=0&require_name_email=1&stc_enabled=1&stb_enabled=0&show_avatars=1&avatar_default=retro&greeting=Leave+a+Comment&greeting_reply=Leave+a+Reply+to+%25s&color_scheme=light&lang=en_US&jetpack_version=6.5&show_cookie_consent=10&has_cookie_consent=0&sig=994755b3a90bcc4f55f5d83da744d172d6a73ff2#parent=https%3A%2F%2Fcss-tricks.com%2Flodge%2Flearn-jquery%2F05-dom-ready%2F";
+					}
+				};
+
+				
+				if ( 'undefined' !== typeof addComment ) {
+					addComment._Jetpack_moveForm = addComment.moveForm;
+
+					addComment.moveForm = function ( commId, parentId, respondId, postId ) {
+						var returnValue = addComment._Jetpack_moveForm( commId, parentId, respondId, postId ),
+							cancelClick, cancel;
+
+						if ( false === returnValue ) {
+							cancel = document.getElementById( 'cancel-comment-reply-link' );
+							cancelClick = cancel.onclick;
+							cancel.onclick = function () {
+								var cancelReturn = cancelClick.call( this );
+								if ( false !== cancelReturn ) {
+									return cancelReturn;
+								}
+
+								if ( ! comm_par ) {
+									return cancelReturn;
+								}
+
+								comm_par = 0;
+
+								tellFrameNewParent();
+
+								return cancelReturn;
+							};
+						}
+
+						if ( comm_par == parentId ) {
+							return returnValue;
+						}
+
+						comm_par = parentId;
+
+						tellFrameNewParent();
+
+						return returnValue;
+					};
+				}
+
+				
+				// Do the post message bit after the dom has loaded.
+				document.addEventListener( 'DOMContentLoaded', function () {
+					var iframe_url = "https:\/\/jetpack.wordpress.com";
+					if ( window.postMessage ) {
+						if ( document.addEventListener ) {
+							window.addEventListener( 'message', function ( event ) {
+								var origin = event.origin.replace( /^http:\/\//i, 'https://' );
+								if ( iframe_url.replace( /^http:\/\//i, 'https://' ) !== origin ) {
+									return;
+								}
+								jQuery( frame ).height( event.data );
+							});
+						} else if ( document.attachEvent ) {
+							window.attachEvent( 'message', function ( event ) {
+								var origin = event.origin.replace( /^http:\/\//i, 'https://' );
+								if ( iframe_url.replace( /^http:\/\//i, 'https://' ) !== origin ) {
+									return;
+								}
+								jQuery( frame ).height( event.data );
+							});
+						}
+					}
+				})
+
+			})();
+		</script>
+
+		<script type="text/javascript" src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/e-201838.js" async="async" defer="defer"></script>
+<script type="text/javascript">
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:6.5',blog:'45537868',post:'148806',tz:'-7',srv:'css-tricks.com'} ]);
+	_stq.push([ 'clickTrackerInit', '45537868', '148806' ]);
+</script>
+
+  
+    <script>var __should_toggle_comments = false;</script>
+  
+<script src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/global-min.js"></script>
+
+<script async="" src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/ei.js"></script>
+
+
+
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-68528-29', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));</script>
+
+
+
+
+<img src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/g.gif" alt=":)" id="wpstats" width="6" height="5"><iframe scrolling="no" allowtransparency="true" src="%2305:%20All%20About%20DOM%20Ready%20|%20CSS-Tricks_files/widget_iframe.html" title="Twitter settings iframe" style="display: none;" frameborder="0"></iframe><iframe id="rufous-sandbox" scrolling="no" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: medium none;" title="Twitter analytics iframe" frameborder="0"></iframe></body></html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Document</title>
+  <meta charset="utf-8">
+
+</head>
+<body>
+  <h1>Hi</h1>
+
+  <script src="jquery-3.3.1.js"> </script>
+  <script>
+    $("h1").css("color", "blue");
+    //domready function may be needed if you want touse jQuery at the header
+  </script>
+
+  </body>
+</html>
